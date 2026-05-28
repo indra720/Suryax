@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #003D3D;
+  --color-secondary: #E85D04;
+  --color-accent: #FFB300;
+  --color-surface: #F8F7F4;
+  --color-charcoal: #111827;
+  
+  --font-sans: "Inter", "Satoshi", system-ui, sans-serif;
+  --font-display: "Poppins", "Satoshi", system-ui, sans-serif;
+}
+
+:root {
+  background-color: var(--color-surface);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+}
+
+@layer base {
+  body {
+    @apply antialiased text-charcoal tracking-tight text-lg leading-relaxed font-normal;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight font-bold text-primary;
+  }
+}
+
+.text-description {
+  @apply text-lg text-charcoal/60 leading-relaxed;
+}
+
+.text-detail {
+  @apply text-sm font-semibold text-charcoal/50;
+}
+
+.section-heading {
+  @apply text-4xl md:text-6xl font-black text-primary leading-tight;
+}
+
+.glass-header {
+  @apply bg-white/90 backdrop-blur-md border-b border-gray-100;
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px -5px rgba(0, 61, 61, 0.05);
+}
+
+.card-shadow-hover {
+  box-shadow: 0 30px 60px -15px rgba(0, 61, 61, 0.15);
+}
+
+.section-padding {
+  @apply py-24 md:py-32;
+}
+
+.gradient-primary {
+  background: linear-gradient(135deg, #003D3D 0%, #005a5a 100%);
+}

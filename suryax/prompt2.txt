@@ -1,0 +1,510 @@
+step-1 ======
+
+
+Create a high-end, ultra-modern real estate website homepage for Jaipur real estate (buy properties). The website name is "PinkCity Homes" or "JaipurNest Luxury Homes". It should look premium, luxurious, and visually stunning like 2026 luxury real estate portals.
+
+Overall Design Style:
+
+- Quiet luxury aesthetic with clean minimalism + Rajasthan royal touch
+
+- Color palette: Deep teal (#00332E) and saffron orange (#FF9933) as accents, soft gold (#D4AF37), pure white background, dark gray text. Support light & dark mode.
+
+- Typography: Bold modern sans-serif headings (Poppins or Inter), elegant body text.
+
+- High-quality cinematic hero images with Jaipur vibes (modern high-rise apartments + Amer Fort silhouette + Aravalli hills in background).
+
+- Smooth animations, hover effects (scale + soft shadow + quick info overlay), parallax scrolling on sections.
+
+- Fully responsive, mobile-first, fast-loading feel.
+
+Layout Structure:
+
+1. Sticky Navbar (Top)
+
+   - Logo left: "PinkCity Homes" with subtle Jaipur palace icon
+
+   - Menu: Buy | Rent | New Projects | Localities | Builders | Insights
+
+   - Right side: Location selector "Jaipur" (dropdown with areas), "Post Property" (prominent orange button), "Login / Sign Up"
+
+2. Hero Section (Full-screen, most impactful)
+
+   - Cinematic background image: Luxurious modern apartment balcony overlooking Jaipur city skyline at golden hour with pink fort in distance.
+
+   - Big bold headline in white with slight shadow: "Discover Your Royal Home in Pink City"
+
+   - Subheadline: "2,800+ Verified Properties • Ready to Move & New Launches in Vaishali Nagar, Mansarovar, Malviya Nagar & More"
+
+   - Large centered search bar with tabs: Buy | Rent | Projects | Plots
+
+   - Inside search: 
+
+     - Input: "Search by Project or Locality (Vaishali Nagar, Mansarovar, Jagatpura...)"
+
+     - Property Type dropdown: Apartment, Villa, Independent House, Plot
+
+     - Budget range slider: ₹20 Lakhs - ₹5 Crores+
+
+     - BHK: 1, 2, 3, 4+
+
+   - Prominent CTA button: "Search Properties" (glowing orange)
+
+   - Below: Quick filters chips – "New Launches 2026" | "Luxury Villas" | "Affordable Homes" | "Ready to Move"
+
+3. Why Jaipur 2026 Section
+
+   - 4 elegant cards with icons: High ROI • World-class Infrastructure • Green & Modern Living • Royal Legacy Meets Future
+
+4. Featured & Hot Properties Section
+
+   - Heading: "Handpicked Properties in Jaipur"
+
+   - Responsive masonry/grid of 6-8 premium property cards
+
+   - Each card:
+
+     - Large hero image with overlay tags ("Ready to Move" green, "New Launch" blue, "Premium" gold)
+
+     - Project name (e.g., Ashiana Rangoli Gardens, Mahima Florenza, Vinayak Royal Crysta)
+
+     - Location: Vaishali Nagar / Mansarovar Extension / Malviya Nagar
+
+     - Price: ₹85 Lakhs - ₹1.8 Cr | 3 BHK | 1850 sq.ft.
+
+     - Small amenities icons (Clubhouse, Swimming Pool, Gym, Parking, 24x7 Security)
+
+     - Hover effect: Scale up + "View Details • Get Brochure • Schedule Visit"
+
+     - Price trend: "↑ 14% in last year"
+
+5. Popular Localities Section
+
+   - Heading: "Explore Top Localities in Jaipur"
+
+   - Grid or horizontal scroll cards for: Vaishali Nagar (Premium), Mansarovar (Family Favorite), Malviya Nagar (Central), Jagatpura, Ajmer Road, C-Scheme (Luxury)
+
+   - Each card: Locality name, Avg price/sqft, Number of projects, "Explore" button + small map pin
+
+6. Top Builders & New Launches
+
+   - Carousel or grid of builder logos (Mahima, Ashiana, Manglam, Vatika, Omaxe etc.)
+
+   - Separate section: "New Launches & Upcoming Projects 2026" with similar property cards
+
+7. Market Insights Teaser
+
+   - Small stats: Average price ₹5,800/sqft • High demand in Vaishali Nagar Extension
+
+   - "Jaipur Real Estate Report 2026" card with "Read Now" button
+
+Footer:
+
+- Comprehensive links, city areas, property types, contact, social icons
+
+- Tagline: "Live Royal in Modern Jaipur"
+
+Additional Details:
+
+- Use lots of high-resolution real estate photography with soft natural lighting.
+
+- Make property cards look expensive and clickable.
+
+- Add subtle Rajasthan elements (jaali patterns, elephant motifs very lightly) without making it traditional.
+
+- Overall vibe: Sophisticated, trustworthy, aspirational, conversion-focused (lots of CTAs like "Book Site Visit", "Download Brochure", "Instant Callback").
+
+Generate this as a complete modern website UI/UX design in high detail, cinematic style, 4K resolution, perfect for frontend development reference.
+
+
+
+step-2 :::
+
+Implement a clickable property quick-view modal that shows images, highlights, amenities, price/builder info, and CTAs like Download brochure and Schedule visit.
+
+
+
+
+
+
+
+
+
+
+
+
+ or 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Create a full-stack level, production-ready Real Estate Website (Jaipur-based) with a complete multi-page architecture, proper navigation, and scalable UI — similar to top platforms like MagicBricks, Housing.com, and 99acres.
+
+This should NOT be a landing page — it must behave like a real working product.
+
+🧠 PHASE 1: BASIC STRUCTURE (FOUNDATION)
+
+🌐 Pages (MUST HAVE ROUTING)
+
+Create proper pages using routing:
+
+Home (/)
+
+Buy Properties (/buy)
+
+Rent Properties (/rent)
+
+Projects / New Launches (/projects)
+
+Property Details (/property/:id)
+
+Localities (/localities)
+
+Builders (/builders)
+
+Post Property (/post-property)
+
+Insights / Blog (/insights)
+
+Login (/login)
+
+Signup (/signup)
+
+🔝 PHASE 2: NAVBAR (INDUSTRY STANDARD)
+
+Sticky, clean, professional navbar:
+
+Left:
+
+Logo: "JaipurNest"
+
+Center Menu:
+
+Home
+
+Buy
+
+Rent
+
+Projects
+
+Localities
+
+Builders
+
+Insights
+
+Right:
+
+Location dropdown (Jaipur areas)
+
+Login / Signup
+
+Post Property (highlighted button – saffron color)
+
+👉 IMPORTANT:
+
+Each menu item should navigate to a separate page
+
+DO NOT use section scroll (no #id linking)
+
+🎨 PHASE 3: DESIGN SYSTEM (PREMIUM LOOK)
+
+Primary: Deep Teal (#0F4C5C)
+
+Accent: Saffron Orange (#FF7A00)
+
+Luxury: Soft Gold (#D4AF37)
+
+Background: White + light gray
+
+Typography:
+
+Headings: Poppins / Inter (bold)
+
+Body: clean sans-serif
+
+UI:
+
+Soft shadows
+
+Hover animations (scale + glow)
+
+Glassmorphism cards
+
+Smooth transitions
+
+🏠 PHASE 4: HOME PAGE (ENTRY POINT)
+
+Hero Section:
+
+Fullscreen Jaipur skyline (Amer Fort + modern apartments)
+
+Headline: “Find Your Dream Home in Jaipur”
+
+Advanced Search Bar:
+
+Tabs: Buy | Rent | Projects | Plots
+
+Filters:
+
+Location
+
+Property Type
+
+Budget
+
+BHK
+
+CTA: Search
+
+👉 On search → redirect to /buy or /rent with filters
+
+Home Sections:
+
+Why Invest in Jaipur
+
+Featured Properties (click → details page)
+
+Popular Localities (click → locality page)
+
+Top Builders
+
+New Launches 2026
+
+Market Insights
+
+🏢 PHASE 5: LISTING PAGES (/buy, /rent)
+
+Layout:
+
+Left: Filters sidebar
+
+Right: Property grid (3–4 cards)
+
+Filters:
+
+Budget
+
+BHK
+
+Property Type
+
+Status (Ready / Under Construction)
+
+Property Card:
+
+Image
+
+Title + Location
+
+Price
+
+BHK + Size
+
+Tags
+
+Amenities icons
+
+CTA: View Details
+
+👉 Click → /property/:id
+
+📄 PHASE 6: PROPERTY DETAILS PAGE (ADVANCED UX)
+
+Top Layout:
+
+Left: Image gallery + virtual tour
+
+Right: Sticky info panel
+
+Info Panel:
+
+Title + Location
+
+Builder
+
+Price
+
+BHK / Size
+
+Buttons:
+
+Book Visit
+
+Download Brochure
+
+Contact
+
+Sections:
+
+Price Trends (mini graph)
+
+Key Highlights
+
+Amenities (icon grid)
+
+Floor Plans
+
+Location Map
+
+Nearby Facilities
+
+Similar Properties
+
+📍 PHASE 7: LOCALITIES PAGE
+
+Cards for Jaipur areas:
+
+Vaishali Nagar
+
+Mansarovar
+
+Jagatpura
+
+Malviya Nagar
+
+Each card:
+
+Avg price
+
+Growth %
+
+Explore button
+
+🏗 PHASE 8: BUILDERS PAGE
+
+Builder cards:
+
+Logo
+
+Name
+
+Description
+
+👉 Click → builder detail page (optional advanced)
+
+📊 PHASE 9: INSIGHTS PAGE
+
+Blog layout
+
+Real estate trends
+
+EMI calculator
+
+🧾 PHASE 10: POST PROPERTY PAGE
+
+Form:
+
+Property type
+
+Location
+
+Price
+
+Images upload
+
+Contact details
+
+❤️ PHASE 11: ADVANCED FEATURES (PRO LEVEL)
+
+Wishlist (heart icon)
+
+Compare properties
+
+Smart recommendations
+
+Price trend graphs
+
+“Jaipur’s Finest” badge
+
+Virtual tour button
+
+📱 PHASE 12: RESPONSIVENESS
+
+Mobile-first design
+
+Sticky bottom CTA on mobile
+
+Tablet optimized grid
+
+⚙️ PHASE 13: TECH SETUP
+
+React + Tailwind CSS
+
+Component-based architecture
+
+Dummy JSON data (properties, builders, locations)
+
+Proper folder structure:
+
+components/
+
+pages/
+
+data/
+
+hooks/
+
+🎯 FINAL GOAL
+
+This should feel like:
+
+A real startup product
+
+Fully navigable website
+
+Not just UI — but complete UX flow
+
+Focus on:
+✔ Navigation
+✔ Real pages
+✔ Detail page depth
+✔ Premium UI
+
+Make it visually stunning and production-ready.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Deep Teal (#0F766E) as primary brand color
+
+Deep Navy (#0B1F3A) for dark sections and depth
+
+Cool Blue (#3B82F6) for interactive elements and CTAs
+
+Soft Gold (#C9A14A) only for text highlights and premium accents
+
+Off-white (#F8FAFC) for clean backgrounds                                                   ye color combination hona chiye okk 

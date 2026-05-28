@@ -1,0 +1,80 @@
+Create a premium, ultra-modern 2026 luxury real estate website redesign for **Suryax Group** (Jaipur-based company). Completely refresh the old design while keeping all the core content and sections.
+
+**Brand Name:** Suryax  
+**Tagline:** Find Your Ideal Property Today
+
+**New Color Palette (Modern & Premium):**
+- Primary: Deep Teal (#003D3D) and Rich Terracotta Orange (#E85D04)
+- Accent: Warm Gold (#FFB300)
+- Neutral: Soft Off-White (#F8F7F4), Dark Charcoal (#111827), Light Gray
+- Use elegant gradients and subtle shadows for a high-end feel.
+
+**Overall Design Style:**
+- Ultra-clean, spacious, luxurious real estate design (2026 trend)
+- Generous whitespace, elegant typography, smooth animations
+- Premium photography with overlay effects
+- Modern sans-serif fonts (Satoshi or Inter)
+- Fully responsive (Desktop + Mobile views)
+
+**Homepage Structure (All Sections from Screenshots):**
+
+1. **Navigation Bar:**
+   - Logo "Suryax" (modern circular icon) on left
+   - Menu: Home, About Us, Projects, Property Map, Others, Blog, Contact Us
+   - Right: Register & Login buttons (elegant style)
+
+2. **Hero Section:**
+   - Full-width stunning modern luxury home image with overlay
+   - Big headline: "Find Your Ideal Property Today"
+   - Subheadline and description about premium real estate solutions
+   - Prominent search bar with filters (Keyword, Property Type, Location)
+   - CTA buttons: Explore Properties + WhatsApp
+
+3. **Categories Section:**
+   - Title: "The World Of Suryax"
+   - 3 Beautiful cards: Residential, Commercial, Farmhouses & Resorts
+
+4. **About Us Section:**
+   - Title: "Building Dreams With Trust & Transparency"
+   - Left side modern architecture image with magnifying glass effect
+   - Right side content + stats (12 Years, 2000 Cr+, 500+ Employees, 40% Growth)
+
+5. **Featured Projects:**
+   - Title: "The Cityscape Collection"
+   - Grid of property cards showing:
+     - High-quality images
+     - Price (₹95 Lakh, ₹60 Lakh, ₹1.2 Cr etc.)
+     - Location (Vaishali Nagar, Jagatpura, Mansarovar, Tonk Road, Malviya Nagar)
+     - Details (BHK, Sqft, Status: Under Construction)
+   - "View All Projects" button
+
+6. **Why Choose Suryax:**
+   - Orange/Teal section with 3 columns: Prime Locations, Trusted & Transparent, Customer-First Approach
+
+7. **Testimonials:**
+   - Title: "Our Customers Think We're The Best"
+   - 3 Elegant testimonial cards with photos and 5-star ratings
+
+8. **Blog / Latest News:**
+   - "Latest Property News & Market Trends" with 3 blog cards
+
+9. **Footer:**
+   - Contact details (+91 7240200300, info@suryax.com)
+   - Full address: B 18 B 2 Floor Shiv Marg Banipark, Jaipur
+   - Quick links, social icons, copyright
+
+**Additional Important Pages to Design:**
+- Individual Property Detail Page (e.g. Flats in Jagatpura with images, details, Call/WhatsApp/Inquiry buttons)
+- Register & Login Pages (clean modern forms)
+- Contact Us Page with form
+- Vision & Mission Page
+- Suryax Property Plans section (investment with monthly income)
+
+**Design Requirements:**
+- Very premium, luxurious and trustworthy look
+- Smooth hover effects, subtle scroll animations
+- WhatsApp floating button
+- High visual hierarchy and excellent typography
+- Show both Desktop and Mobile versions
+
+Generate the full modern redesign with high attention to every detail from the provided screenshots.

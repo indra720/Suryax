@@ -1,0 +1,48 @@
+Create a complete ultra-modern, premium luxury real estate website redesign for **Suryax Group** (Jaipur-based company) in 2026 design style. Keep all original content, sections, and pages exactly as they exist on https://suryax.com/, but make the design much more modern, spacious, elegant and premium.
+
+**Brand Name:** Suryax  
+**Tagline:** Find Your Ideal Property Today
+
+**Color Palette (Modern Premium):**
+- Primary: Deep Teal (#003D3D) + Vibrant Terracotta Orange (#E85D04)
+- Accent: Warm Gold (#FFB300)
+- Background: Off-White (#F8F7F4) & Dark Charcoal (#111827)
+- Use subtle gradients, elegant shadows, and smooth animations.
+
+**Typography:** Modern sans-serif (Satoshi / Inter)
+
+**Full Website Pages to Design (All Existing Pages):**
+
+1. **Homepage** – Full modern hero with search bar, "The World of Suryax" categories (Residential, Commercial, Farmhouses & Resorts), Cityscape Collection (property cards), About section, Why Choose Us, Testimonials, Latest Blog section, Footer.
+
+2. **About Us Page** (/About) – Vision & Mission, Company stats (12 Years, 2000 Cr+, 500+ Employees), "Building Dreams With Trust & Transparency", team/values.
+
+3. **Residential Page** (/residential) – Sub-categories: Flats, Bungalows, Block Flats with property listings.
+
+4. **Commercial Page** (/commercial) – Shops/Offices, Warehouses, Industrial Land, Surya Industrial Park.
+
+5. **Townships / Farmhouses & Resorts Page** (/townships) – Farmhouses, Agricultural Land, Luxury Farmhouses, with "SURYAX Property Plans" (Guaranteed monthly income, team income, rewards).
+
+6. **Property Detail Page** (Dynamic – e.g. /property-details) – Large image gallery, full details (Price, Location, Status: Under Construction, Area, BHK, Type), Call Now, WhatsApp Chat, Inquiry buttons.
+
+7. **Blog Page** & Individual Blog Posts – "Latest Property News & Market Trends", articles like "Top 5 Things to Check Before Buying", Investment Guides, etc.
+
+8. **Contact Us Page** (/Contact) – Contact form, phone (+91 7240200300), email, full address (B 18 B 2 Floor Shiv Marg Banipark, Jaipur), map placeholder.
+
+9. **Register Page** (/Register) – Referral Name, Name, Email, Mobile, Password, Terms checkbox.
+
+10. **Login Page** (/Login) – Username, Password, Forgot Password, Register link.
+
+11. **Property Map / Others Pages** – Include Property Map section if visible.
+
+**Design Requirements for All Pages:**
+- Ultra-clean, spacious luxury aesthetic (like Lodha, Sobha, Godrej Properties)
+- Large high-quality property images with hover effects
+- Consistent navigation bar across all pages (Logo + Menu + Register/Login)
+- WhatsApp floating button on every page
+- Mobile + Desktop responsive views
+- Smooth micro-animations and scroll effects
+- High visual hierarchy and premium card designs
+- Exact content from the original website must be used
+
+Generate the full website design with high resolution, showing key pages clearly. Focus on making it look trustworthy, luxurious, and modern while preserving all original information and functionality.
