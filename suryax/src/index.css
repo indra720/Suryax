@@ -33,7 +33,7 @@
 .text-detail {
   @apply text-sm font-semibold text-charcoal/50;
 }
-
+/* new udpate */
 .section-heading {
   @apply text-4xl md:text-6xl font-black text-primary leading-tight;
 }
