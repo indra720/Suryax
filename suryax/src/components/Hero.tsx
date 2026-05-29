@@ -11,7 +11,7 @@ export default function Hero() {
           alt="Luxury Home" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-charcoal/90 via-charcoal/50 to-transparent"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">

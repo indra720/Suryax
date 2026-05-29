@@ -24,7 +24,7 @@ export default function AboutUs() {
               <img 
                 src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000" 
                 alt="Modern Architecture" 
-                className="w-full aspect-[4/5] object-cover transition-transform duration-1000 group-hover:scale-110"
+                className="w-full aspect-4/5 object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-500"></div>
             </div>
@@ -33,7 +33,7 @@ export default function AboutUs() {
             <motion.div 
               animate={{ y: [0, -20, 0] }}
               transition={{ repeat: Infinity, duration: 4 }}
-              className="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary rounded-full flex items-center justify-center p-8 shadow-2xl z-20 hidden md:flex"
+              className="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary rounded-full items-center justify-center p-8 shadow-2xl z-20 hidden md:flex"
             >
               <div className="text-white text-center">
                 <div className="text-4xl font-bold mb-1">12</div>

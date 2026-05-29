@@ -15,7 +15,7 @@ export default function About() {
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200" 
                 alt="Suryax Corporate" 
-                className="w-full aspect-[4/5] object-cover"
+                className="w-full aspect-4/5 object-cover"
               />
             </div>
             <div className="absolute -bottom-10 -left-10 bg-secondary p-12 rounded-[3rem] shadow-2xl hidden md:block">

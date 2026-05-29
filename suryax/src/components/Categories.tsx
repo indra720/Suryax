@@ -49,14 +49,14 @@ export default function Categories() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="group relative overflow-hidden rounded-3xl cursor-pointer aspect-[4/5]"
+              className="group relative overflow-hidden rounded-3xl cursor-pointer aspect-4/5"
             >
               <img 
                 src={cat.image} 
                 alt={cat.title} 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-liinear-to-t from-charcoal via-charcoal/20 to-transparent"></div>
               
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
                 <div className={`${cat.color} w-16 h-16 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:rotate-12 transition-transform`}>
