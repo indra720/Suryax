@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Building2, ChevronDown, Map, Layout, Users, Target, CalendarDays, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
+import logo from "/suryaxLogo.webp"
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -41,12 +42,17 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleMobileDropdown = (name: string) => {
+    setMobileDropdown(mobileDropdown === name ? null : name);
+  };
 
   return (
     <nav 
@@ -60,14 +66,12 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform duration-500">
-            <Building2 className="text-white w-7 h-7" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-2xl font-black tracking-tighter leading-none text-[#0B1F3A]">SURYAX</span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] mt-0.5 text-secondary">Group</span>
-          </div>
+        <Link to="/" className="flex items-center group ml-0 lg:ml-12.5">
+          <img 
+            src={logo} 
+            alt="Suryax Logo" 
+            className="h-16 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+          />
         </Link>
 
         {/* Desktop Menu - Pill Container */}
@@ -195,51 +199,140 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Side Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden bg-white shadow-2xl border-t border-gray-100 overflow-hidden"
-          >
-            <div className="px-6 py-10 flex flex-col gap-6">
-              {navItems.map((item) => (
-                <div key={item.name}>
-                  <NavLink
-                    to={item.href}
-                    className="text-xl font-black text-[#0B1F3A] flex items-center justify-between"
-                    onClick={() => !item.dropdown && setIsOpen(false)}
-                  >
-                    {item.name}
-                  </NavLink>
-                  {item.dropdown && (
-                    <div className="mt-4 ml-4 grid grid-cols-1 gap-4 border-l-2 border-gray-100 pl-4">
-                      {item.dropdown.map((sub) => (
-                        <Link 
-                          key={sub.name} 
-                          to={sub.href}
-                          className="text-sm font-bold text-[#0B1F3A]/60"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <div className="pt-8 border-t border-gray-100 flex gap-4">
-                <Link to="/login" className="flex-1 py-4 text-center font-bold text-primary border-2 border-primary rounded-xl">
-                  Login
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-110 xl:hidden"
+            />
+            
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 h-full w-[85%] max-w-100 bg-white z-120 shadow-2xl xl:hidden flex flex-col"
+            >
+              {/* Drawer Header */}
+              <div className="p-6 flex items-center justify-between border-b border-gray-50">
+                <Link to="/" onClick={() => setIsOpen(false)}>
+                  <img src={logo} alt="Logo" className="h-10 w-auto" />
                 </Link>
-                <Link to="/register" className="flex-1 py-4 text-center font-bold bg-secondary text-white rounded-xl shadow-lg">
-                  Register
-                </Link>
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-primary"
+                >
+                  <X size={24} />
+                </button>
               </div>
-            </div>
-          </motion.div>
+
+              {/* Scrollable Content - Hidden Scrollbar */}
+              <div className="flex-1 overflow-y-auto py-8 px-6 space-y-8 scrollbar-hide">
+                <style>{`
+                  .scrollbar-hide::-webkit-scrollbar { display: none; }
+                  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+                `}</style>
+
+                {navItems.map((item) => (
+                  <div key={item.name} className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <NavLink
+                        to={item.href}
+                        className={({ isActive }) => cn(
+                          "text-2xl font-black transition-colors flex-1",
+                          isActive ? "text-primary" : "text-[#0B1F3A]/60"
+                        )}
+                        onClick={() => !item.dropdown && setIsOpen(false)}
+                      >
+                        {item.name}
+                      </NavLink>
+                      {item.dropdown && (
+                        <button 
+                          onClick={() => toggleMobileDropdown(item.name)}
+                          className={cn(
+                            "w-10 h-10 rounded-xl flex items-center justify-center transition-all",
+                            mobileDropdown === item.name ? "bg-primary text-white" : "bg-gray-50 text-primary/40"
+                          )}
+                        >
+                          <ChevronDown 
+                            size={20} 
+                            className={cn(
+                              "transition-transform duration-300",
+                              mobileDropdown === item.name && "rotate-180"
+                            )} 
+                          />
+                        </button>
+                      )}
+                    </div>
+                    
+                    {item.dropdown && (
+                      <AnimatePresence>
+                        {mobileDropdown === item.name && (
+                          <motion.div 
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="grid grid-cols-1 gap-4 pl-4 border-l-2 border-primary/10 ml-1 py-2">
+                              {item.dropdown.map((sub) => (
+                                <Link 
+                                  key={sub.name} 
+                                  to={sub.href}
+                                  className="group flex items-center gap-3"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  <div className="w-8 h-8 rounded-lg bg-primary/5 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                    <sub.icon size={14} />
+                                  </div>
+                                  <div>
+                                    <div className="text-sm font-bold text-[#0B1F3A]">{sub.name}</div>
+                                    <div className="text-[10px] text-gray-400 font-medium">{sub.desc}</div>
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    )}
+                  </div>
+                ))}
+
+                <div className="pt-8 border-t border-gray-50 space-y-4">
+                  <Link 
+                    to="/login" 
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full py-4 text-center font-bold text-primary bg-primary/5 rounded-2xl"
+                  >
+                    Login to Account
+                  </Link>
+                  <Link 
+                    to="/register" 
+                    onClick={() => setIsOpen(false)}
+                    className="block w-full py-4 text-center font-bold bg-secondary text-white rounded-2xl shadow-lg shadow-secondary/20"
+                  >
+                    Create Account
+                  </Link>
+                </div>
+              </div>
+
+              {/* Drawer Footer */}
+              <div className="p-6 bg-gray-50/50">
+                <p className="text-[10px] font-black uppercase tracking-widest text-primary/30 text-center">
+                  © 2026 Suryax Group Jaipur
+                </p>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

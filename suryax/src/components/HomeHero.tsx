@@ -4,10 +4,10 @@ import {
   Building,
   ChevronDown,
   MapPin,
-  ShieldCheck,
+  
   Star,
   ChevronRight,
-  Play,
+
   Home,
   Briefcase,
   Map,
@@ -71,18 +71,18 @@ export default function HomeHero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen lg:min-h-[110vh] flex items-center pt-24 pb-20 overflow-hidden bg-navy">
+    <section className="relative min-h-screen lg:min-h-[110vh] flex items-center pt-32 sm:pt-28 pb-20 overflow-hidden bg-white">
       
-      {/* Background Video with Sophisticated Overlay */}
+      {/* Background with Sophisticated Light Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px] z-10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A] via-[#0B1F3A]/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] z-10" />
+        <div className="absolute inset-0 bg-linear-to-r from-white via-white/80 to-transparent z-10" />
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover scale-105"
+          className="w-full h-full object-cover scale-105 opacity-30"
         >
           <source 
             src="https://assets.mixkit.co/videos/preview/mixkit-luxury-house-exterior-and-pool-4806-large.mp4" 
@@ -91,8 +91,8 @@ export default function HomeHero() {
         </video>
       </div>
 
-      {/* Decorative Orbs */}
-      <div className="absolute top-0 right-0 w-125 h-125 bg-primary/10 rounded-full blur-[120px] z-0 animate-pulse" />
+      {/* Decorative Orbs - Adjusted for light background */}
+      <div className="absolute top-0 right-0 w-125 h-125 bg-primary/5 rounded-full blur-[120px] z-0 animate-pulse" />
       <div className="absolute bottom-0 left-0 w-75 h-75 bg-secondary/5 rounded-full blur-[100px] z-0" />
 
       <div className="container mx-auto px-4 md:px-8 relative z-20">
@@ -123,17 +123,17 @@ export default function HomeHero() {
                       className="absolute inset-0 flex items-center justify-center cursor-pointer"
                       onClick={() => setActiveCard(index)}
                     >
-                      <div className="w-70 md:w-95 h-100 md:h-120 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/50 border border-white/10 group bg-navy/40 backdrop-blur-md">
+                      <div className="w-70 md:w-95 h-100 md:h-120 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-primary/10 border border-gray-100 group bg-white/80 backdrop-blur-md">
                         <img 
                           src={prop.image} 
                           alt={prop.title} 
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent opacity-80" />
+                        <div className="absolute inset-0 bg-linear-to-t from-primary/80 via-transparent to-transparent opacity-80" />
                         
                         <div className="absolute bottom-0 left-0 right-0 p-8">
                           <div className="flex items-center gap-2 mb-3">
-                            <span className="px-3 py-1 bg-primary/90 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                            <span className="px-3 py-1 bg-white/90 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full">
                               {prop.type}
                             </span>
                             <div className="flex items-center gap-1 text-secondary">
@@ -142,13 +142,13 @@ export default function HomeHero() {
                             </div>
                           </div>
                           <h3 className="text-2xl font-bold text-white mb-1">{prop.title}</h3>
-                          <div className="flex items-center gap-1 text-white/60 text-sm mb-4">
-                            <MapPin size={14} className="text-primary" />
+                          <div className="flex items-center gap-1 text-white/80 text-sm mb-4">
+                            <MapPin size={14} className="text-white" />
                             {prop.location}
                           </div>
                           <div className="flex items-center justify-between">
                             <span className="text-xl font-black text-white">{prop.price}</span>
-                            <button className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 hover:bg-primary hover:border-primary transition-all">
+                            <button className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 hover:bg-secondary hover:border-secondary transition-all">
                               <ChevronRight size={20} />
                             </button>
                           </div>
@@ -167,7 +167,7 @@ export default function HomeHero() {
                   key={i}
                   onClick={() => setActiveCard(i)}
                   className={`h-1.5 transition-all duration-500 rounded-full ${
-                    i === activeCard ? "w-10 bg-primary" : "w-4 bg-white/20"
+                    i === activeCard ? "w-10 bg-primary" : "w-4 bg-primary/20"
                   }`}
                 />
               ))}
@@ -182,26 +182,26 @@ export default function HomeHero() {
               transition={{ duration: 0.8 }}
             >
               {/* Luxury Badge */}
-              <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full mb-6">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(0,61,61,0.8)]"></span>
-                <span className="text-golden/80 font-bold uppercase tracking-[0.3em] text-[10px]">Exquisite Real Estate</span>
+              <div className="inline-flex items-center gap-3 bg-primary/5 border border-primary/10 px-5 py-2 rounded-full mb-6">
+                <span className="w-2 h-2 bg-secondary rounded-full animate-pulse shadow-[0_0_10px_rgba(232,93,4,0.8)]"></span>
+                <span className="text-primary font-bold uppercase tracking-[0.3em] text-[10px]">Exquisite Real Estate</span>
               </div>
 
               {/* Refined Heading */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary  leading-[1.1] tracking-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary leading-[1.1] tracking-tight mb-6">
                 Redefining The Art Of <br />
-                <span className="text-primary relative inline-block">
+                <span className="text-secondary relative inline-block">
                   Luxury Living
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: '100%' }}
                     transition={{ delay: 0.8, duration: 1 }}
-                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-primary to-transparent rounded-full"
+                    className="absolute -bottom-2 left-0 h-1 bg-linear-to-r from-secondary to-transparent rounded-full"
                   />
                 </span>
               </h1>
 
-              <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-xl font-medium border-l-2 border-primary/30 pl-6">
+              <p className="text-base md:text-lg text-primary/60 leading-relaxed max-w-xl font-medium border-l-2 border-secondary/30 pl-6">
                 Experience Jaipur's most prestigious collection of homes. 
                 Suryax Group brings you unparalleled quality, visionary architecture, 
                 and a commitment to excellence that transforms lifestyles.
@@ -215,14 +215,14 @@ export default function HomeHero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative max-w-2xl"
             >
-              <div className="bg-navy/80 backdrop-blur-2xl border border-white/10 p-2 rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
+              <div className="bg-white border border-gray-100 p-2 rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,61,61,0.15)]">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
-                  <div className="md:col-span-5 bg-white/5 rounded-2xl px-5 py-3.5 flex items-center border border-white/5 focus-within:border-primary/40 transition-all">
+                  <div className="md:col-span-5 bg-gray-50 rounded-2xl px-5 py-3.5 flex items-center border border-gray-100 focus-within:border-primary/40 transition-all">
                     <Search size={18} className="text-primary mr-3" />
                     <input 
                       type="text" 
                       placeholder="Search Locality..." 
-                      className="bg-transparent outline-none text-white text-sm font-medium w-full placeholder:text-white/20"
+                      className="bg-transparent outline-none text-primary text-sm font-medium w-full placeholder:text-primary/30"
                     />
                   </div>
                   
@@ -230,9 +230,9 @@ export default function HomeHero() {
                   <div className="md:col-span-4 relative" ref={dropdownRef}>
                     <div 
                       onClick={() => setIsTypeOpen(!isTypeOpen)}
-                      className="h-full bg-white/5 rounded-2xl px-5 py-3.5 flex items-center justify-between border border-white/5 cursor-pointer hover:bg-white/10 transition-all"
+                      className="h-full bg-gray-50 rounded-2xl px-5 py-3.5 flex items-center justify-between border border-gray-100 cursor-pointer hover:bg-gray-100 transition-all"
                     >
-                      <div className="flex items-center gap-2 text-white/60">
+                      <div className="flex items-center gap-2 text-primary/70">
                         <Building size={16} className="text-primary" />
                         <span className="text-sm font-medium">{selectedType}</span>
                       </div>
@@ -240,7 +240,7 @@ export default function HomeHero() {
                         animate={{ rotate: isTypeOpen ? 180 : 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <ChevronDown size={14} className="text-white/20" />
+                        <ChevronDown size={14} className="text-primary/30" />
                       </motion.div>
                     </div>
 
@@ -250,7 +250,7 @@ export default function HomeHero() {
                           initial={{ opacity: 0, y: 10, scale: 0.95 }}
                           animate={{ opacity: 1, y: 5, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                          className="absolute top-full left-0 right-0 z-50 bg-navy border border-white/10 rounded-2xl shadow-2xl overflow-hidden mt-2 p-1.5"
+                          className="absolute top-full left-0 right-0 z-50 bg-white border border-gray-100 rounded-2xl shadow-2xl overflow-hidden mt-2 p-1.5"
                         >
                           {propertyTypes.map((type) => (
                             <div
@@ -259,10 +259,10 @@ export default function HomeHero() {
                                 setSelectedType(type.name);
                                 setIsTypeOpen(false);
                               }}
-                              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group"
+                              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/5 transition-colors cursor-pointer group"
                             >
                               <type.icon size={16} className="text-primary group-hover:scale-110 transition-transform" />
-                              <span className="text-sm font-medium text-white/80 group-hover:text-white">{type.name}</span>
+                              <span className="text-sm font-medium text-primary/80 group-hover:text-primary">{type.name}</span>
                             </div>
                           ))}
                         </motion.div>
@@ -270,7 +270,7 @@ export default function HomeHero() {
                     </AnimatePresence>
                   </div>
 
-                  <button className="md:col-span-3 bg-primary text-white text-xs font-black uppercase tracking-widest rounded-2xl py-3.5 px-6 shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                  <button className="md:col-span-3 bg-primary text-white text-xs font-black uppercase tracking-widest rounded-2xl py-3.5 px-6 shadow-xl shadow-primary/20 hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all">
                     Explore
                   </button>
                 </div>
@@ -280,8 +280,8 @@ export default function HomeHero() {
               <div className="flex items-center gap-4 mt-8">
                 <div className="flex -space-x-3">
                   {[1,2,3,4].map(i => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-[#0B1F3A] overflow-hidden">
-                      <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" className="w-full h-full object-cover" />
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-sm">
+                      <img src={`https://i.pravatar.cc/100?u=${i+20}`} alt="user" className="w-full h-full object-cover" />
                     </div>
                   ))}
                 </div>
@@ -289,7 +289,7 @@ export default function HomeHero() {
                   <div className="flex items-center gap-1 text-secondary mb-0.5">
                     {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="currentColor" />)}
                   </div>
-                  <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">5,000+ Verified Clients</p>
+                  <p className="text-[10px] text-primary/40 font-bold uppercase tracking-widest">5,000+ Verified Clients</p>
                 </div>
               </div>
             </motion.div>
@@ -303,8 +303,8 @@ export default function HomeHero() {
         transition={{ repeat: Infinity, duration: 2 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20 group"
       >
-        <span className="text-[10px] font-black text-white/30 tracking-[0.4em] uppercase group-hover:text-primary transition-colors">Discover</span>
-        <div className="w-1px h-12 bg-gradient-to-b from-primary to-transparent" />
+        <span className="text-[10px] font-black text-primary/30 tracking-[0.4em] uppercase group-hover:text-primary transition-colors">Discover</span>
+        <div className="w-1px h-12 bg-linear-to-b from-primary to-transparent" />
       </motion.div>
 
     </section>
