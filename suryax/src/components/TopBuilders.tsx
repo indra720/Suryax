@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { builders } from '../data/mockData';
-import { ShieldCheck, Award, Zap } from 'lucide-react';
+import { ShieldCheck, Award } from 'lucide-react';
 
 export default function TopBuilders() {
   return (

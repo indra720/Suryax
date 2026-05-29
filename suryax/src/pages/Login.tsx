@@ -62,7 +62,7 @@ export default function Login() {
             <div className="space-y-3">
               <div className="flex justify-between items-center ml-1">
                 <label className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Password</label>
-                <Link to="/forgot-password" size={12} className="text-[10px] font-bold text-secondary uppercase tracking-widest hover:underline">Forgot Password?</Link>
+                <Link to="/forgot-password" className="text-[10px] font-bold text-secondary uppercase tracking-widest hover:underline">Forgot Password?</Link>
               </div>
               <div className="relative">
                 <Lock className="absolute left-6 top-1/2 -translate-y-1/2 text-primary/20" size={20} />

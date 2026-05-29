@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { TreePine, MapPin, ArrowRight, ShieldCheck, Gem, Coins } from 'lucide-react';
+import { TreePine, MapPin, ShieldCheck, Gem, Coins } from 'lucide-react';
 import { properties } from '../data/mockData';
 
 const townshipsData = properties.filter(p => p.type === 'Farmhouse');
@@ -25,7 +25,7 @@ export default function Townships() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32">
           {townshipsData.map((prop) => (
             <div key={prop.id} className="group cursor-pointer">
-              <div className="relative aspect-[16/9] rounded-[4rem] overflow-hidden mb-10 shadow-2xl transition-all duration-700">
+              <div className="relative aspect-video rounded-[4rem] overflow-hidden mb-10 shadow-2xl transition-all duration-700">
                 <img src={prop.image} alt={prop.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="absolute top-10 right-10">

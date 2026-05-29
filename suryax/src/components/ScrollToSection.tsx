@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronUp, ChevronDown } from 'lucide-react';
-import { cn } from '../lib/utils'; // Assuming cn helper is available or use standard template
 
 export default function ScrollToSection() {
   const [isVisible, setIsVisible] = useState(false);

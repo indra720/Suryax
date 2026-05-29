@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { properties } from '../data/mockData';
-import { MapPin, Maximize2, BedDouble, Bath, Heart, ArrowUpRight, Star, ArrowRight } from 'lucide-react';
+import { MapPin, Maximize2, BedDouble, Bath, Heart, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useState } from 'react';
 

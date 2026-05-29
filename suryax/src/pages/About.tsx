@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Building2, ShieldCheck, HeartHandshake, Users, Award, TrendingUp } from 'lucide-react';
+import { ShieldCheck, Award } from 'lucide-react';
 
 export default function About() {
   return (

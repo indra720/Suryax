@@ -2,10 +2,9 @@ import HomeHero from '../components/HomeHero';
 import FeaturedProperties from '../components/FeaturedProperties';
 import PopularLocalities from '../components/PopularLocalities';
 import TopBuilders from '../components/TopBuilders';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Target, ShieldCheck, ChevronRight, Zap, Building2, Map, Layout, Users, CalendarDays, ArrowRight, Heart, Star, Menu, X, Building, ChevronDown, MapPin, Play, Briefcase, Warehouse } from 'lucide-react';
-import { Link, NavLink } from 'react-router-dom';
-import { cn } from '../lib/utils';
+import { motion } from 'framer-motion';
+import { Target, ShieldCheck, ChevronRight, Zap, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
   return (

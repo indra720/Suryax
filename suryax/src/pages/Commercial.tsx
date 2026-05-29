@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Building, MapPin, ArrowRight, Zap, Target, TrendingUp } from 'lucide-react';
+import { MapPin, ArrowRight, Zap, Target, TrendingUp } from 'lucide-react';
 import { properties } from '../data/mockData';
 
 const commercialData = properties.filter(p => p.type === 'Commercial');
