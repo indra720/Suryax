@@ -57,3 +57,33 @@
 .gradient-primary {
   background: linear-gradient(135deg, #003D3D 0%, #005a5a 100%);
 }
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 6s ease infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.premium-card {
+  @apply bg-white rounded-[2rem] border border-gray-100 shadow-xl transition-all duration-500;
+}
+
+

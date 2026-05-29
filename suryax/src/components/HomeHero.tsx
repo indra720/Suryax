@@ -1,313 +1,312 @@
-// import { motion } from 'framer-motion';
-// import { Search, MapPin, Building, ChevronDown, MessageCircle } from 'lucide-react';
-
-// export default function HomeHero() {
-//   return (
-//     <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-24 overflow-hidden">
-//       {/* Background Image with refined overlay */}
-//       <div className="absolute inset-0 z-0">
-//         <img 
-//           src="https://images.unsplash.com/photo-1600585154340-be6191dae10c?auto=format&fit=crop&q=80&w=2000" 
-//           alt="Suryax Premium Living" 
-//           className="w-full h-full object-cover"
-//         />
-//         <div className="absolute inset-0 bg-primary/80 backdrop-blur-[2px]"></div>
-//       </div>
-
-//       <div className="container mx-auto px-6 relative z-10">
-//         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.8 }}
-//           >
-//             <span className="inline-block px-5 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 text-gold rounded-full text-[11px] font-bold uppercase tracking-[0.3em] mb-8 shadow-sm">
-//               Real Estate Solutions
-//             </span>
-//             <h1 className="text-5xl md:text-7xl font-black text-white leading-[1] mb-8 tracking-tighter">
-//               Find Your Ideal <br /> Property Today
-//             </h1>
-//             <p className="text-lg md:text-xl text-white/70 mb-16 max-w-2xl mx-auto font-semibold leading-relaxed">
-//               At Suryax, we bring you a wide range of premium real estate opportunities tailored for your residential, commercial, and investment needs.
-//             </p>
-//           </motion.div>
-
-//           {/* Real Estate Search Card */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 30 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.8, delay: 0.2 }}
-//             className="w-full bg-white p-4 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center border border-gray-100"
-//           >
-//             <div className="flex-1 w-full flex items-center px-6 py-4 border-b md:border-b-0 md:border-r border-gray-100">
-//               <Search className="text-primary mr-4" size={20} />
-//               <input 
-//                 type="text" 
-//                 placeholder="Search Property, Locality..." 
-//                 className="w-full outline-none text-navy font-semibold text-sm placeholder:text-navy/40"
-//               />
-//             </div>
-            
-//             <div className="flex-1 w-full flex items-center justify-between px-6 py-4 border-b md:border-b-0 md:border-r border-gray-100 cursor-pointer">
-//               <span className="text-sm font-semibold text-navy/60">Property Type</span>
-//               <ChevronDown size={16} className="text-navy/30" />
-//             </div>
-
-//             <button className="w-full md:w-auto px-10 py-4 bg-primary text-white font-bold rounded-xl hover:bg-navy transition-all text-sm tracking-widest uppercase">
-//               Search
-//             </button>
-//           </motion.div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
-
-
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   Building,
   ChevronDown,
-  MessageCircle,
+  MapPin,
+  ShieldCheck,
+  Star,
+  ChevronRight,
+  Play,
+  Home,
+  Briefcase,
+  Map,
+  Warehouse
 } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+
+const propertyTypes = [
+  { name: 'All Types', icon: Building },
+  { name: 'Residential', icon: Home },
+  { name: 'Commercial', icon: Briefcase },
+  { name: 'Townships', icon: Map },
+  { name: 'Industrial', icon: Warehouse },
+];
 
 export default function HomeHero() {
-  const stats = [
+  const [activeCard, setActiveCard] = useState(0);
+  const [isTypeOpen, setIsTypeOpen] = useState(false);
+  const [selectedType, setSelectedType] = useState('Type');
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsTypeOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const premiumProperties = [
     {
-      number: "15+",
-      label: "Years Experience",
+      title: "The Sky Villa",
+      location: "Jagatpura, Jaipur",
+      price: "₹ 4.5 Cr",
+      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800",
+      type: "Luxury Penthouse",
     },
     {
-      number: "5000+",
-      label: "Happy Clients",
+      title: "Royal Palms",
+      location: "Vaishali Nagar, Jaipur",
+      price: "₹ 2.8 Cr",
+      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800",
+      type: "Modern Villa",
     },
     {
-      number: "250+",
-      label: "Projects Delivered",
+      title: "The Heritage",
+      location: "C-Scheme, Jaipur",
+      price: "₹ 6.2 Cr",
+      image: "https://images.unsplash.com/photo-1600607687940-4e5a994e5771?auto=format&fit=crop&q=80&w=800",
+      type: "Classic Estate",
     },
   ];
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveCard((prev) => (prev + 1) % premiumProperties.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen lg:min-h-[110vh] flex items-center pt-24 pb-20 overflow-hidden bg-navy">
+      
+      {/* Background Video with Sophisticated Overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F3A] via-[#0B1F3A]/40 to-transparent z-10" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover scale-105"
+        >
+          <source 
+            src="https://assets.mixkit.co/videos/preview/mixkit-luxury-house-exterior-and-pool-4806-large.mp4" 
+            type="video/mp4" 
+          />
+        </video>
+      </div>
 
-      {/* Background Image */}
-      <motion.div
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.1 }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-        className="absolute inset-0"
-      >
-        <img
-          src="https://images.unsplash.com/photo-1600585154340-be6191dae10c?auto=format&fit=crop&q=80&w=2500"
-          alt="Luxury Property"
-          className="w-full h-full object-cover"
-        />
-      </motion.div>
+      {/* Decorative Orbs */}
+      <div className="absolute top-0 right-0 w-125 h-125 bg-primary/10 rounded-full blur-[120px] z-0 animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-75 h-75 bg-secondary/5 rounded-full blur-[100px] z-0" />
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-[#08101f]/80" />
-
-      {/* Luxury Gradient Orbs */}
-      <div className="absolute top-20 left-20 w-72 h-72 bg-yellow-500/20 blur-[120px] rounded-full" />
-
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-blue-500/20 blur-[150px] rounded-full" />
-
-      {/* Main Content */}
-      <div className="container mx-auto px-6 relative z-20">
-
-        <div className="max-w-6xl mx-auto text-center">
-
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 mb-8"
-          >
-            <Building size={18} className="text-yellow-400" />
-
-            <span className="text-yellow-400 text-xs uppercase tracking-[4px] font-bold">
-              Luxury Real Estate
-            </span>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none"
-          >
-            Find Your
-            <span className="block mt-3 bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-300 bg-clip-text text-transparent">
-              Dream Property
-            </span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="mt-8 text-lg md:text-xl text-white/75 max-w-3xl mx-auto leading-relaxed"
-          >
-            Discover premium villas, luxury apartments,
-            commercial spaces and investment opportunities
-            with Jaipur's trusted real estate experts.
-          </motion.p>
-
-          {/* Search Box */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="max-w-5xl mx-auto mt-14 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-4 shadow-[0_20px_80px_rgba(0,0,0,0.5)]"
-          >
-            <div className="grid lg:grid-cols-4 gap-4">
-
-              {/* Search */}
-              <div className="lg:col-span-2 flex items-center bg-white rounded-2xl px-5 py-4">
-                <Search
-                  size={20}
-                  className="text-slate-500 mr-3"
-                />
-
-                <input
-                  type="text"
-                  placeholder="Search Property, Locality..."
-                  className="w-full outline-none text-black"
-                />
-              </div>
-
-              {/* Property Type */}
-              <div className="flex items-center justify-between bg-white rounded-2xl px-5 py-4 cursor-pointer">
-                <span className="text-slate-500">
-                  Property Type
-                </span>
-
-                <ChevronDown
-                  size={18}
-                  className="text-slate-500"
-                />
-              </div>
-
-              {/* Search Button */}
-              <button
-                className="
-                rounded-2xl
-                bg-gradient-to-r
-                from-yellow-400
-                to-yellow-600
-                text-black
-                font-bold
-                px-8
-                py-4
-                hover:scale-105
-                transition-all
-                duration-300
-                "
-              >
-                SEARCH
-              </button>
+      <div className="container mx-auto px-4 md:px-8 relative z-20">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
+          
+          {/* Left Side: 3D Property Carousel */}
+          <div className="flex-1 w-full order-2 lg:order-1 relative">
+            <div className="relative h-112.5 md:h-137.5 perspective-2000">
+              <AnimatePresence mode="wait">
+                {premiumProperties.map((prop, index) => {
+                  const isActive = index === activeCard;
+                  const position = (index - activeCard + premiumProperties.length) % premiumProperties.length;
+                  
+                  return (isActive || position === 1 || position === premiumProperties.length - 1) && (
+                    <motion.div
+                      key={prop.title}
+                      initial={{ opacity: 0, x: 100, rotateY: -45, scale: 0.8 }}
+                      animate={{ 
+                        opacity: position === 0 ? 1 : 0.4, 
+                        x: position === 0 ? 0 : position === 1 ? 120 : -120,
+                        z: position === 0 ? 0 : -200,
+                        rotateY: position === 0 ? 0 : position === 1 ? -35 : 35,
+                        scale: position === 0 ? 1 : 0.85,
+                        zIndex: position === 0 ? 30 : 10
+                      }}
+                      exit={{ opacity: 0, x: -100, rotateY: 45, scale: 0.8 }}
+                      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                      onClick={() => setActiveCard(index)}
+                    >
+                      <div className="w-70 md:w-95 h-100 md:h-120 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/50 border border-white/10 group bg-navy/40 backdrop-blur-md">
+                        <img 
+                          src={prop.image} 
+                          alt={prop.title} 
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-transparent to-transparent opacity-80" />
+                        
+                        <div className="absolute bottom-0 left-0 right-0 p-8">
+                          <div className="flex items-center gap-2 mb-3">
+                            <span className="px-3 py-1 bg-primary/90 text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                              {prop.type}
+                            </span>
+                            <div className="flex items-center gap-1 text-secondary">
+                              <Star size={12} fill="currentColor" />
+                              <span className="text-[10px] font-bold">PREMIUM</span>
+                            </div>
+                          </div>
+                          <h3 className="text-2xl font-bold text-white mb-1">{prop.title}</h3>
+                          <div className="flex items-center gap-1 text-white/60 text-sm mb-4">
+                            <MapPin size={14} className="text-primary" />
+                            {prop.location}
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xl font-black text-white">{prop.price}</span>
+                            <button className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20 hover:bg-primary hover:border-primary transition-all">
+                              <ChevronRight size={20} />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
             </div>
-          </motion.div>
-
-          {/* Statistics */}
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
-
-            {stats.map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{
-                  y: -10,
-                }}
-                className="
-                bg-white/10
-                backdrop-blur-xl
-                border
-                border-white/20
-                rounded-3xl
-                p-8
-                "
-              >
-                <h3 className="text-4xl font-black text-yellow-400">
-                  {item.number}
-                </h3>
-
-                <p className="text-white/70 mt-3">
-                  {item.label}
-                </p>
-              </motion.div>
-            ))}
+            
+            {/* Carousel Indicators */}
+            <div className="flex justify-center gap-3 mt-8">
+              {premiumProperties.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveCard(i)}
+                  className={`h-1.5 transition-all duration-500 rounded-full ${
+                    i === activeCard ? "w-10 bg-primary" : "w-4 bg-white/20"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Trusted Text */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              delay: 0.8,
-            }}
-            className="mt-12"
-          >
-            <p className="text-white/60 uppercase tracking-[4px] text-sm">
-              Trusted By Thousands Of Property Buyers Across Rajasthan
-            </p>
-          </motion.div>
+          {/* Right Side: Content & Search */}
+          <div className="flex-1 order-1 lg:order-2 space-y-8 text-left">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* Luxury Badge */}
+              <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full mb-6">
+                <span className="w-2 h-2 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(0,61,61,0.8)]"></span>
+                <span className="text-golden/80 font-bold uppercase tracking-[0.3em] text-[10px]">Exquisite Real Estate</span>
+              </div>
+
+              {/* Refined Heading */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary  leading-[1.1] tracking-tight mb-6">
+                Redefining The Art Of <br />
+                <span className="text-primary relative inline-block">
+                  Luxury Living
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: '100%' }}
+                    transition={{ delay: 0.8, duration: 1 }}
+                    className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-primary to-transparent rounded-full"
+                  />
+                </span>
+              </h1>
+
+              <p className="text-base md:text-lg text-gray-500 leading-relaxed max-w-xl font-medium border-l-2 border-primary/30 pl-6">
+                Experience Jaipur's most prestigious collection of homes. 
+                Suryax Group brings you unparalleled quality, visionary architecture, 
+                and a commitment to excellence that transforms lifestyles.
+              </p>
+            </motion.div>
+
+            {/* Compact Elegant Search Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative max-w-2xl"
+            >
+              <div className="bg-navy/80 backdrop-blur-2xl border border-white/10 p-2 rounded-3xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-2">
+                  <div className="md:col-span-5 bg-white/5 rounded-2xl px-5 py-3.5 flex items-center border border-white/5 focus-within:border-primary/40 transition-all">
+                    <Search size={18} className="text-primary mr-3" />
+                    <input 
+                      type="text" 
+                      placeholder="Search Locality..." 
+                      className="bg-transparent outline-none text-white text-sm font-medium w-full placeholder:text-white/20"
+                    />
+                  </div>
+                  
+                  {/* Functional Type Dropdown */}
+                  <div className="md:col-span-4 relative" ref={dropdownRef}>
+                    <div 
+                      onClick={() => setIsTypeOpen(!isTypeOpen)}
+                      className="h-full bg-white/5 rounded-2xl px-5 py-3.5 flex items-center justify-between border border-white/5 cursor-pointer hover:bg-white/10 transition-all"
+                    >
+                      <div className="flex items-center gap-2 text-white/60">
+                        <Building size={16} className="text-primary" />
+                        <span className="text-sm font-medium">{selectedType}</span>
+                      </div>
+                      <motion.div
+                        animate={{ rotate: isTypeOpen ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <ChevronDown size={14} className="text-white/20" />
+                      </motion.div>
+                    </div>
+
+                    <AnimatePresence>
+                      {isTypeOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 5, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          className="absolute top-full left-0 right-0 z-50 bg-navy border border-white/10 rounded-2xl shadow-2xl overflow-hidden mt-2 p-1.5"
+                        >
+                          {propertyTypes.map((type) => (
+                            <div
+                              key={type.name}
+                              onClick={() => {
+                                setSelectedType(type.name);
+                                setIsTypeOpen(false);
+                              }}
+                              className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer group"
+                            >
+                              <type.icon size={16} className="text-primary group-hover:scale-110 transition-transform" />
+                              <span className="text-sm font-medium text-white/80 group-hover:text-white">{type.name}</span>
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <button className="md:col-span-3 bg-primary text-white text-xs font-black uppercase tracking-widest rounded-2xl py-3.5 px-6 shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                    Explore
+                  </button>
+                </div>
+              </div>
+
+              {/* Trust Pill */}
+              <div className="flex items-center gap-4 mt-8">
+                <div className="flex -space-x-3">
+                  {[1,2,3,4].map(i => (
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-[#0B1F3A] overflow-hidden">
+                      <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <div className="flex items-center gap-1 text-secondary mb-0.5">
+                    {[1,2,3,4,5].map(i => <Star key={i} size={12} fill="currentColor" />)}
+                  </div>
+                  <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">5,000+ Verified Clients</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Scroll Down */}
+      {/* Scroll Indicator */}
       <motion.div
-        animate={{
-          y: [0, 12, 0],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 1.5,
-        }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer z-20 group"
       >
-        <ChevronDown
-          size={40}
-          className="text-yellow-400"
-        />
+        <span className="text-[10px] font-black text-white/30 tracking-[0.4em] uppercase group-hover:text-primary transition-colors">Discover</span>
+        <div className="w-1px h-12 bg-gradient-to-b from-primary to-transparent" />
       </motion.div>
 
-      {/* WhatsApp Floating Button */}
-      <a
-        href="#"
-        className="
-        fixed
-        bottom-6
-        right-6
-        w-16
-        h-16
-        rounded-full
-        bg-green-500
-        flex
-        items-center
-        justify-center
-        shadow-2xl
-        z-50
-        hover:scale-110
-        transition-all
-        "
-      >
-        <MessageCircle
-          size={28}
-          className="text-white"
-        />
-      </a>
     </section>
   );
 }
-
-

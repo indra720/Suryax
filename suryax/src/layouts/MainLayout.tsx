@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ScrollToSection from '../components/ScrollToSection';
 
 export default function MainLayout() {
   return (
@@ -9,6 +10,7 @@ export default function MainLayout() {
       <main className="flex-grow">
         <Outlet />
       </main>
+      <ScrollToSection />
       <Footer />
     </div>
   );

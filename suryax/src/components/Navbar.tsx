@@ -1,20 +1,38 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Building2, User, LogIn, PhoneCall } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import { Menu, X, Building2, ChevronDown, Map, Layout, Users, Target, CalendarDays, ArrowRight } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Property Map', href: '/map' },
-  { name: 'Others', href: '/others' },
+  { 
+    name: 'Projects', 
+    href: '/projects',
+    dropdown: [
+      { name: 'Residential', desc: 'Luxury villas and premium apartments.', icon: Building2, href: '/residential' },
+      { name: 'Commercial', desc: 'Modern office spaces and retail hubs.', icon: Layout, href: '/commercial' },
+      { name: 'Townships', desc: 'Integrated communities with world-class amenities.', icon: Map, href: '/townships' },
+    ]
+  },
+  { 
+    name: 'Property Map', 
+    href: '/map',
+    dropdown: [
+      { name: 'Suryax Layout', desc: 'Master plan of our flagship community.', icon: Layout, href: '/map/suryax' },
+      { name: 'Warehouse Plan', desc: 'Logistics and industrial layout designs.', icon: Building2, href: '/map/warehouse' },
+    ]
+  },
+  { 
+    name: 'Others', 
+    href: '/others',
+    dropdown: [
+      { name: 'Testimonials', desc: 'What our happy families say about us.', icon: Users, href: '/testimonials' },
+      { name: 'Vision & Mission', desc: 'Our core values and future roadmap.', icon: Target, href: '/vision' },
+      { name: 'Events', desc: 'Updates from our latest ground-breaking events.', icon: CalendarDays, href: '/events' },
+    ]
+  },
   { name: 'Blog', href: '/blog' },
   { name: 'Contact Us', href: '/contact' },
 ];
@@ -22,6 +40,7 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -32,48 +51,136 @@ export default function Navbar() {
   return (
     <nav 
       className={cn(
-        "fixed w-full z-50 transition-all duration-300",
-        scrolled ? "bg-white shadow-md py-3" : "bg-transparent py-6"
+        "fixed w-full z-100 transition-all duration-500",
+        scrolled 
+          ? "bg-white shadow-xl py-3" 
+          : "bg-white/90 backdrop-blur-xl shadow-lg py-5 border-b border-white/20"
       )}
+      onMouseLeave={() => setActiveDropdown(null)}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-full bg-primary flex items-center justify-center shadow-lg">
-            <Building2 className="text-white w-6 h-6" />
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-transform duration-500">
+            <Building2 className="text-white w-7 h-7" />
           </div>
           <div className="flex flex-col">
-            <span className={cn("text-2xl font-black tracking-tight leading-none", scrolled ? "text-primary" : "text-white")}>SURYAX</span>
-            <span className={cn("text-[10px] font-bold uppercase tracking-[0.2em] mt-0.5", scrolled ? "text-secondary" : "text-white/80")}>Group</span>
+            <span className="text-2xl font-black tracking-tighter leading-none text-[#0B1F3A]">SURYAX</span>
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] mt-0.5 text-secondary">Group</span>
           </div>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden xl:flex items-center gap-1">
+        {/* Desktop Menu - Pill Container */}
+        <div className="hidden xl:flex items-center bg-[#0B1F3A]/5 backdrop-blur-md border border-[#0B1F3A]/5 p-1.5 rounded-full relative">
           {navItems.map((item) => (
-            <NavLink
-              key={item.name}
-              to={item.href}
-              className={({ isActive }) => cn(
-                "px-4 py-2 font-semibold transition-colors duration-200 rounded-lg",
-                isActive 
-                  ? "text-primary" 
-                  : scrolled ? "text-navy/60 hover:text-primary" : "text-white/70 hover:text-white"
-              )}
+            <div 
+              key={item.name} 
+              className="relative"
+              onMouseEnter={() => setActiveDropdown(item.name)}
             >
-              {item.name}
-            </NavLink>
+              <NavLink
+                to={item.href}
+                className={({ isActive }) => cn(
+                  "relative px-6 py-2 font-bold transition-all duration-300 rounded-full flex items-center gap-1.5 group/link whitespace-nowrap",
+                  isActive && !item.dropdown
+                    ? "text-white" 
+                    : "text-[#0B1F3A]/70 hover:text-[#0B1F3A]"
+                )}
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && !item.dropdown && (
+                      <motion.div
+                        layoutId="nav-pill"
+                        className="absolute inset-0 rounded-full bg-primary -z-10 shadow-lg shadow-primary/20"
+                        transition={{ type: "spring", bounce: 0.15, duration: 0.6 }}
+                      />
+                    )}
+                    <span className={cn(
+                      "relative z-10 transition-transform duration-300",
+                      isActive && !item.dropdown && "scale-105"
+                    )}>
+                      {item.name}
+                    </span>
+                    {item.dropdown && (
+                      <ChevronDown 
+                        size={14} 
+                        className={cn(
+                          "transition-transform duration-300 opacity-50 group-hover/link:opacity-100",
+                          activeDropdown === item.name && "rotate-180"
+                        )} 
+                      />
+                    )}
+                  </>
+                )}
+              </NavLink>
+
+              {/* Mega Dropdown */}
+              <AnimatePresence>
+                {item.dropdown && activeDropdown === item.name && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+                  >
+                    <div className="bg-white rounded-[2.5rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2)] border border-gray-100 p-8 min-w-135.5 overflow-hidden relative">
+                      {/* Decorative Background Element */}
+                      <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full -mr-20 -mt-20 blur-3xl" />
+                      
+                      <div className="relative z-10">
+                        <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-50">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                              {item.name === 'Projects' ? <Building2 size={20} /> : item.name === 'Property Map' ? <Map size={20} /> : <Layout size={20} />}
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-black uppercase tracking-widest text-primary">{item.name}</h4>
+                              <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Explore our premium selection</p>
+                            </div>
+                          </div>
+                          <Link to={item.href} className="text-xs font-bold text-secondary flex items-center gap-1 hover:gap-2 transition-all">
+                            View All <ArrowRight size={14} />
+                          </Link>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                          {item.dropdown.map((subItem) => (
+                            <Link 
+                              key={subItem.name} 
+                              to={subItem.href}
+                              className="group/card p-5 rounded-3xl border border-gray-50 hover:bg-primary hover:border-primary hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 flex flex-col gap-3"
+                            >
+                              <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-primary group-hover/card:bg-white transition-all duration-500">
+                                <subItem.icon size={24} />
+                              </div>
+                              <div>
+                                <h5 className="font-bold text-[#0B1F3A] group-hover/card:text-white transition-colors mb-1">{subItem.name}</h5>
+                                <p className="text-xs text-[#0B1F3A]/50 group-hover/card:text-white/70 transition-colors leading-relaxed line-clamp-2">
+                                  {subItem.desc}
+                                </p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
         </div>
 
         {/* Auth & CTAs */}
         <div className="hidden lg:flex items-center gap-6">
-          <Link to="/register" className={cn("font-semibold transition-colors", scrolled ? "text-navy/60 hover:text-primary" : "text-white/70 hover:text-white")}>
+          <Link to="/register" className="font-bold transition-colors text-[#0B1F3A]/70 hover:text-[#0B1F3A]">
             Register
           </Link>
           <Link 
             to="/login" 
-            className="px-6 py-2.5 bg-secondary text-white font-bold rounded-full hover:bg-orange-600 transition-all shadow-lg active:scale-95"
+            className="px-8 py-3 bg-secondary text-white font-black uppercase tracking-widest text-[10px] rounded-full hover:bg-[#ff6b0a] transition-all shadow-xl shadow-secondary/20 active:scale-95"
           >
             Login
           </Link>
@@ -81,7 +188,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className={cn("xl:hidden p-2", scrolled ? "text-primary" : "text-white")}
+          className="xl:hidden p-2 text-[#0B1F3A]"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -99,14 +206,29 @@ export default function Navbar() {
           >
             <div className="px-6 py-10 flex flex-col gap-6">
               {navItems.map((item) => (
-                <NavLink
-                  key={item.name}
-                  to={item.href}
-                  className="text-xl font-bold text-primary hover:text-secondary"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </NavLink>
+                <div key={item.name}>
+                  <NavLink
+                    to={item.href}
+                    className="text-xl font-black text-[#0B1F3A] flex items-center justify-between"
+                    onClick={() => !item.dropdown && setIsOpen(false)}
+                  >
+                    {item.name}
+                  </NavLink>
+                  {item.dropdown && (
+                    <div className="mt-4 ml-4 grid grid-cols-1 gap-4 border-l-2 border-gray-100 pl-4">
+                      {item.dropdown.map((sub) => (
+                        <Link 
+                          key={sub.name} 
+                          to={sub.href}
+                          className="text-sm font-bold text-[#0B1F3A]/60"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <div className="pt-8 border-t border-gray-100 flex gap-4">
                 <Link to="/login" className="flex-1 py-4 text-center font-bold text-primary border-2 border-primary rounded-xl">
