@@ -43,7 +43,7 @@ export default function FeaturedProperties() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="group relative h-[550px] rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,61,61,0.15)] cursor-pointer"
+              className="group relative h-137.5 rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-15px_rgba(0,61,61,0.15)] cursor-pointer"
             >
               {/* Main Image */}
               <img 
@@ -53,7 +53,7 @@ export default function FeaturedProperties() {
               />
               
               {/* Dynamic Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-80 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-t from-primary via-primary/20 to-transparent opacity-80 transition-opacity duration-500" />
               
               {/* Status & Wishlist (Top Actions) */}
               <div className="absolute top-8 left-8 right-8 flex justify-between items-start z-20">
